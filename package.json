@@ -2,6 +2,14 @@
   "name": "react-redux-project",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
+    "lint": "eslint webpack.config.js src --color"
+  },
   "dependencies": {
     "react": "16.5.2",
     "react-dom": "16.5.2",
@@ -17,13 +25,8 @@
     "babel-preset-react-app": "5.0.4",
     "eslint": "5.6.0",
     "jest": "23.6.0",
-    "webpack": "4.19.1"
-  },
-  "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
-    "lint": "eslint webpack.config.js src --color"
+    "webpack": "4.19.1",
+    "gh-pages": "2.0.0"
   },
   "browserslist": [
     ">0.2%",
