@@ -1,42 +1,42 @@
 import * as CourseActionTypes from '../actionTypes/course';
+import CourseApi from '../api/mockCourseApi';
 
-let initialState = [];
+const initialState = [];
 
 export default function CourseReducer(state=initialState, action) {
   switch(action.type) {
     case CourseActionTypes.LIST_COURSES:
-        return [
-          ...state,
+      return [
           ...action.courses
         ]
     case CourseActionTypes.ADD_COURSE:
       return [
-        ...state,
-        {
-          id: action.course.id,
-          title: action.course.title,
-          watchHref: action.course.watchHref,
-          authorId: action.course.authorId,
-          length: action.course.length,
-          category: action.course.category,
-        }
-      ]
+          ...state.courses,
+          {
+            id: action.course.id,
+            title: action.course.title,
+            watchHref: action.course.watchHref,
+            authorId: action.course.authorId,
+            length: action.course.length,
+            category: action.course.category,
+          }
+        ]
     case CourseActionTypes.DELETE_COURSE:
-      return [
-        ...state.slice(0, action.index),
-        ...state.slice(action.index + 1)
-      ]
+      CourseApi.deleteCourse(action.index).then(result => {
+        return result;
+      });
+      return [];
     case CourseActionTypes.UPDATE_COURSE:
       return [
         state[action.index] = {
-          id: action.course.id,
-          title: action.course.title,
-          watchHref: action.course.watchHref,
-          authorId: action.course.authorId,
-          length: action.course.length,
-          category: action.course.category,
-        }
-      ]
+            id: action.course.id,
+            title: action.course.title,
+            watchHref: action.course.watchHref,
+            authorId: action.course.authorId,
+            length: action.course.length,
+            category: action.course.category,
+          }
+        ]
     default:
       return state;
   }

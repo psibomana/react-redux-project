@@ -3,36 +3,33 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from "react-router-dom";
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import CourseAPI from './api/mockCourseApi';
-import CourseReducer from './reducers/course';
+import reducers from './reducers/reducers';
 import HomePage from './containers/homePage';
 import AboutPage from './containers/aboutPage';
+import AuthorPage from './containers/authorPage';
 import CoursePage from './containers/coursePage';
 import ManageCoursePage from './components/course/manageCoursePage';
 import './css/index.css';
 import './css/bootstrap.min.css';
-import { listCourses } from './actions/course';
 
 
 const store = createStore(
-  CourseReducer,
+  reducers,
   window.devToolsExtension && window.devToolsExtension()
 );
-
-CourseAPI.getAllCourses().then(result => {
-  store.dispatch(listCourses(result));
-});
-
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <div>
         <Route exact path="/" component={HomePage} />
-        <Route path="/about" component={AboutPage} />
-        <Route path="/course/:id" component={ManageCoursePage} />
-        {/* <Route path="/course" component={ManageCoursePage} /> */}
-        <Route path="/courses" component={CoursePage} />
+        <Route exact path="/about" component={AboutPage} />
+        <Route exact path="/courses" component={CoursePage} />
+        <Route exact path="/course" component={ManageCoursePage} />
+        <Route exact path="/course/:id" component={ManageCoursePage} />
+        <Route exact path="/authors" component={AuthorPage} />
+        {/* <Route exact path="/author" component={ManageCoursePage} />
+        <Route exact path="/author/:id" component={ManageCoursePage} /> */}
       </div>
     </BrowserRouter>
   </Provider>, document.getElementById('root'));

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import CourseAPI from '../api/mockCourseApi';
 import * as CourseActionCreators from '../actions/course';
 import Header from '../components/common/header';
 import CourseList from '../components/course/courseList';
@@ -12,25 +13,26 @@ class CoursePage extends Component {
     courses: PropTypes.array.isRequired
   };
 
+  constructor(props) {
+    super(props);
+
+    CourseAPI.getAllCourses().then(result => {
+      props.actions.listCourses(result);
+    });
+  }
+
   render() {
-
-    const { dispatch, courses } = this.props;
-    const addCourse = bindActionCreators(CourseActionCreators.addCourse, dispatch);
-    const deleteCourse = bindActionCreators(CourseActionCreators.deleteCourse, dispatch);
-    const updateCourse = bindActionCreators(CourseActionCreators.updateCourse, dispatch);
-    const listCourses = bindActionCreators(CourseActionCreators.listCourses, dispatch);
-
     return (
       <div className="container">
         <Header/>
         <div className="align">
           <h3>Courses</h3>
           <CourseList
-            courses={courses}
-            addCourse={addCourse}
-            deleteCourse={deleteCourse}
-            updateCourse={updateCourse}
-            listCourses={listCourses}/>
+            courses={this.props.courses}
+            addCourse={this.props.actions.addCourse}
+            deleteCourse={this.props.actions.deleteCourse}
+            updateCourse={this.props.actions.updateCourse}
+            listCourses={this.props.actions.listCourses}/>
         </div>
       </div>
     );
@@ -39,8 +41,14 @@ class CoursePage extends Component {
 
 const mapStateToProps = state => {
   return {
-    courses: state
+    courses: state.CourseReducer
   }
 }
 
-export default connect(mapStateToProps)(CoursePage);
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: bindActionCreators(CourseActionCreators, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CoursePage);

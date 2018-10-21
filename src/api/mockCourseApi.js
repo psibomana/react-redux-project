@@ -107,7 +107,7 @@ class CourseApi {
           course.id == courseId;
         });
         courses.splice(indexOfCourseToDelete, 1);
-        resolve();
+        resolve(courses);
       }, delay);
     });
   }

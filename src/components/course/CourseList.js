@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import CourseListRow from './courseListRow';
 
 const CourseList = props => {
@@ -27,14 +26,8 @@ const CourseList = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    courses: state
-  }
-}
-
 CourseList.propTypes = {
   courses: PropTypes.array.isRequired
 };
 
-export default connect(mapStateToProps)(CourseList);
+export default CourseList;

@@ -21,10 +21,9 @@ export const addCourse = course => {
   }
 }
 
-export const updateCourse = (index, course) => {
+export const updateCourse = course => {
   return {
     type: CourseActionTypes.UPDATE_COURSE,
-    index,
     course
   }
 }

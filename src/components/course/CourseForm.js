@@ -3,7 +3,13 @@ import PropTypes from 'prop-types';
 import TextInput from '../common/textInput';
 import SelectInput from '../common/selectInput';
 
-const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
+const CourseForm = ({course, allAuthors, onSave, onChange, onDelete, saving, errors, history}) => {
+
+  const onDeleteCourse = () => {
+    history.push('/courses');
+    onDelete(course.id);
+  }
+
   return (
     <form>
       <h1>Manage Course</h1>
@@ -42,9 +48,15 @@ const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
         value={saving ? 'Saving...' : 'Save'}
         className="btn btn-primary"
         onClick={onSave}/>
+      <input
+        type="submit"
+        value='Delete'
+        className="btn btn-danger"
+        onClick={onDeleteCourse}/>
     </form>
   );
 };
+
 
 CourseForm.propTypes = {
   course: PropTypes.object.isRequired,
