@@ -35,6 +35,19 @@ class AuthorApi {
     });
   }
 
+  static getAuthorByID(id) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const author = authors.find(a => a.id == id);
+        if(author){
+          resolve(author);
+        } else {
+          reject(`Author not found`);
+        }
+      }, delay);
+    });
+  }
+
   static saveAuthor(author) {
 	author = Object.assign({}, author); // to avoid manipulating object passed in.
     return new Promise((resolve, reject) => {

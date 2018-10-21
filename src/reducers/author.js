@@ -24,7 +24,7 @@ export default function AuthorReducer(state=initialState, action) {
             ...result
           ]
       });
-      break;
+      return [];
     case AuthorActionTypes.UPDATE_AUTHORS:
       return state[action.index] = {
             id: action.author.id,
