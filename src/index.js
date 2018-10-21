@@ -13,6 +13,7 @@ import manageAuthorPage from './components/author/manageAuthorPage';
 import './css/index.css';
 import './css/bootstrap.min.css';
 
+
 const store = createStore(
   reducers,
   window.devToolsExtension && window.devToolsExtension()
