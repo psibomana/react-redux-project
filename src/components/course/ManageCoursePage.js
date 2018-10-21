@@ -1,28 +1,54 @@
-import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as courseActions from '../../actions/courseActions';
-import CourseForm from './CourseForm';
+import * as CourseActions from '../../actions/course';
+import Header from '../common/header';
+import CourseForm from './courseForm';
+import CourseApi from '../../api/mockCourseApi';
 
 class ManageCoursePage extends React.Component {
-  constructor(props, context) {
-    super(props, context);
+
+  constructor(props) {
+    super(props);
+
+    let course = {
+      id: '',
+      watchHref: '',
+      title: '',
+      authorId: '',
+      length: '',
+      category: ''
+    };
 
     this.state = {
-      course: Object.assign({}, props.course),
+      course: course,
+      allAuthors: () => {},
+      onSave: () => {},
+      onChange: () => {},
+      saving: () => {},
       errors: {}
     };
+
+    CourseApi.getCoursesByID(props.match.params.id).then(course => {
+      this.setState({
+        course: course
+      });
+    });
   }
 
   render() {
     return (
-      <div className="manage-course">
-        <h1>Manage Course</h1>
-        <CourseForm
-          course={this.state.course}
-          errors={this.state.errors}
-          allAuthors={[]}
-        />
+
+      <div className="container">
+        <Header/>
+        <div className="align">
+          <CourseForm
+            course={this.state.course}
+            errors={this.state.errors}
+            allAuthors={[]}
+          />
+        </div>
       </div>
     );
   }
@@ -32,23 +58,15 @@ ManageCoursePage.propTypes = {
   course: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state, ownProps) {
-  let course = {
-    id: '',
-    watchHref: '',
-    title: '',
-    authorId: '',
-    length: '',
-    category: ''
-  };
+const mapStateToProps = state => {
   return {
-    course: course
-  };
+    course: state.course
+  }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(courseActions, dispatch)
+    actions: bindActionCreators(CourseActions, dispatch)
   };
 }
 

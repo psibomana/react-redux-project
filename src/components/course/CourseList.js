@@ -1,7 +1,12 @@
-import React, {PropTypes} from 'react';
-import CourseListRow from './CourseListRow';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import CourseListRow from './courseListRow';
 
-const CourseList = ({courses}) => {
+const CourseList = props => {
+
+  const { courses } = props;
+
   return (
     <table className="table">
       <thead>
@@ -22,8 +27,14 @@ const CourseList = ({courses}) => {
   );
 };
 
+const mapStateToProps = state => {
+  return {
+    courses: state
+  }
+}
+
 CourseList.propTypes = {
   courses: PropTypes.array.isRequired
 };
 
-export default CourseList;
+export default connect(mapStateToProps)(CourseList);

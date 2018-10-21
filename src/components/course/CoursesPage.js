@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 // reference to action(s) this component will dispatch
@@ -19,7 +19,7 @@ class CoursesPage extends React.Component {
     const {courses} = this.props;
 
     return (
-      <div className="courses-page">
+      <div className="row">
         <h1>Courses</h1>
         <CourseList courses={courses}/>
       </div>
