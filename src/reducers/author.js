@@ -1,29 +1,34 @@
-import * as AuthorActionTypes from '../actionTypes/author';
+import {
+  LIST_AUTHORS,
+  ADD_AUTHOR,
+  UPDATE_AUTHORS,
+  DELETE_AUTHORS
+} from '../actions/author';
 import AuthorApi from '../api/mockAuthorApi';
 
 const initialState = [];
 
 export default function AuthorReducer(state=initialState, action) {
   switch(action.type) {
-    case AuthorActionTypes.LIST_AUTHORS:
+    case LIST_AUTHORS:
       return [
           ...action.authors
         ]
-    case AuthorActionTypes.ADD_AUTHOR:
+    case ADD_AUTHOR:
       AuthorApi.saveAuthor(action.author).then(result => {
         return [
           result
         ]
       });
       return [];
-    case AuthorActionTypes.DELETE_AUTHORS:
+    case DELETE_AUTHORS:
       AuthorApi.deleteAuthor(action.index).then(result => {
         return [
             ...result
           ]
       }).catch();
       return [];
-    case AuthorActionTypes.UPDATE_AUTHORS:
+    case UPDATE_AUTHORS:
       return [
           ...state.filter(author => {
             if(author.id === action.author.id){

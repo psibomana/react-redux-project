@@ -1,29 +1,43 @@
-import * as CourseActionTypes from '../actionTypes/course';
+const LIST_COURSES = 'COURSES/LIST_COURSES';
+const ADD_COURSE = 'COURSES/ADD_COURSE';
+const DELETE_COURSE = 'COURSES/DELETE_COURSE';
+const UPDATE_COURSE = 'COURSES/UPDATE_COURSE';
 
-export const listCourses = courses => {
+const listCourses = courses => {
   return {
-    type: CourseActionTypes.LIST_COURSES,
+    type: LIST_COURSES,
     courses: courses
   }
 }
 
-export const deleteCourse = index => {
+const deleteCourse = index => {
   return {
-    type: CourseActionTypes.DELETE_COURSE,
+    type: DELETE_COURSE,
     index
   }
 }
 
-export const addCourse = course => {
+const addCourse = course => {
   return {
-    type: CourseActionTypes.ADD_COURSE,
+    type: ADD_COURSE,
     course
   }
 }
 
-export const updateCourse = course => {
+const updateCourse = course => {
   return {
-    type: CourseActionTypes.UPDATE_COURSE,
+    type: UPDATE_COURSE,
     course
   }
+}
+
+export {
+  LIST_COURSES,
+  ADD_COURSE,
+  DELETE_COURSE,
+  UPDATE_COURSE,
+  listCourses,
+  deleteCourse,
+  addCourse,
+  updateCourse
 }
