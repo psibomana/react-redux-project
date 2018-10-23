@@ -46,18 +46,19 @@ class ManageCoursePage extends React.Component {
   }
 
   render() {
+    const { course, errors, allAuthors, onChange, onSave, onDelete, saving } = this.state;
     return (
       <div className="container">
         <Header/>
         <div className="align">
           <CourseForm
-            course={this.state.course}
-            errors={this.state.errors}
-            allAuthors={this.state.allAuthors}
-            onChange={this.state.onChange}
-            onSave={this.state.onSave}
-            onDelete={this.state.onDelete}
-            saving={this.state.saving}
+            course={course}
+            errors={errors}
+            allAuthors={allAuthors}
+            onChange={onChange}
+            onSave={onSave}
+            onDelete={onDelete}
+            saving={saving}
             history={this.props.history}
           />
         </div>

@@ -18,15 +18,31 @@ class AuthorPage extends Component {
 
     AuthorApi.getAllAuthors().then(result => {
       props.actions.listAuthors(result);
-    });
+    }).catch();
+  }
+
+  addNewAuthor = () => {
+    this.props.history.push('/author');
   }
 
   render() {
     return (
       <div className="container">
         <Header/>
-        <div className="align">
-          <h3>Authors</h3>
+        <div className="align v-offset-10">
+          <div className="row">
+            <div className="col">
+              <h3>Authors</h3>
+            </div>
+            <div className="col">
+              <input
+                type="submit"
+                value='Add Author'
+                className="btn btn-primary btn-sm"
+                onClick={this.addNewAuthor}
+                />
+            </div>
+          </div>
           <AuthorList
             authors={this.props.authors}/>
         </div>

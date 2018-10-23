@@ -10,6 +10,16 @@ const CourseForm = ({course, allAuthors, onSave, onChange, onDelete, saving, err
     onDelete(course.id);
   }
 
+  const onFiedChange = (e) => {
+    course[e.target.name] = e.target.value;
+    onChange(course);
+  }
+
+  const onUpdateCourse = () => {
+    history.push('/courses');
+    onSave(course);
+  }
+
   return (
     <form>
       <h1>Manage Course</h1>
@@ -17,39 +27,41 @@ const CourseForm = ({course, allAuthors, onSave, onChange, onDelete, saving, err
         name="title"
         label="Title"
         value={course.title}
-        onChange={onChange}
+        onChange={onFiedChange}
         error={errors.title}/>
 
       <SelectInput
+        id={course.id}
         name="authorId"
         label="Author"
         value={course.authorId}
         defaultOption="Select Author"
         options={allAuthors}
-        onChange={onChange} error={errors.authorId}/>
+        onChange={onFiedChange}
+        error={errors.authorId}/>
 
       <TextInput
         name="category"
         label="Category"
         value={course.category}
-        onChange={onChange}
+        onChange={onFiedChange}
         error={errors.category}/>
 
       <TextInput
         name="length"
         label="Length"
         value={course.length}
-        onChange={onChange}
+        onChange={onFiedChange}
         error={errors.length}/>
 
       <input
-        type="submit"
+        type="button"
         disabled={saving}
-        value={saving ? 'Saving...' : 'Save'}
+        value='Save'
         className="btn btn-primary"
-        onClick={onSave}/>
+        onClick={onUpdateCourse}/>
       <input
-        type="submit"
+        type="button"
         value='Delete'
         className="btn btn-danger"
         onClick={onDeleteCourse}/>

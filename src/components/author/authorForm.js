@@ -9,6 +9,17 @@ const AuthorForm = ({author, onSave, onChange, onDelete, saving, errors, history
     onDelete(author.id);
   }
 
+
+  const onFiedChange = (e) => {
+    author[e.target.name] = e.target.value;
+    onChange(author);
+  }
+
+  const onUpdateAuthor = () => {
+    history.push('/authors');
+    onSave(author);
+  }
+
   return (
     <form>
       <h1>Manage Author</h1>
@@ -16,23 +27,22 @@ const AuthorForm = ({author, onSave, onChange, onDelete, saving, errors, history
         name="firstName"
         label="First Name"
         value={author.firstName}
-        onChange={onChange}
+        onChange={onFiedChange}
         error={errors.firstName}/>
       <TextInput
         name="lastName"
         label="Last Name"
         value={author.lastName}
-        onChange={onChange}
+        onChange={onFiedChange}
         error={errors.lastName}/>
-
       <input
-        type="submit"
+        type="button"
         disabled={saving}
-        value={saving ? 'Saving...' : 'Save'}
+        value='Save'
         className="btn btn-primary"
-        onClick={onSave}/>
+        onClick={onUpdateAuthor}/>
       <input
-        type="submit"
+        type="button"
         value='Delete'
         className="btn btn-danger"
         onClick={onDeleteAuthor}/>

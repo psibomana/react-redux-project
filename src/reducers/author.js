@@ -10,27 +10,28 @@ export default function AuthorReducer(state=initialState, action) {
           ...action.authors
         ]
     case AuthorActionTypes.ADD_AUTHOR:
-      return [
-          ...state.authors,
-          {
-            id: action.autor.id,
-            firstName: action.author.firstName,
-            lastName: action.author.lastName,
-          }
+      AuthorApi.saveAuthor(action.author).then(result => {
+        return [
+          result
         ]
+      });
+      return [];
     case AuthorActionTypes.DELETE_AUTHORS:
       AuthorApi.deleteAuthor(action.index).then(result => {
         return [
             ...result
           ]
-      });
+      }).catch();
       return [];
     case AuthorActionTypes.UPDATE_AUTHORS:
-      return state[action.index] = {
-            id: action.author.id,
-            firstName: action.author.firstName,
-            lastName: action.author.lastName
-          }
+      return [
+          ...state.filter(author => {
+            if(author.id === action.author.id){
+              return action.author;
+            }
+            return author;
+          })
+        ]
     default:
       return state;
   }

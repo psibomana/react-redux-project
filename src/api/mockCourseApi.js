@@ -66,8 +66,6 @@ class CourseApi {
         const course = courses.find(a => a.id == id);
         if(course){
           resolve(course);
-        } else {
-          reject(`Title not found`);
         }
       }, delay);
     });

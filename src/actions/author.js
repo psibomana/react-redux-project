@@ -1,29 +1,44 @@
-import * as AuthorActionTypes from '../actionTypes/author';
+const LIST_AUTHORS = 'AUTHORS/LIST_AUTHORS';
+const ADD_AUTHOR = 'AUTHORS/ADD_AUTHORS';
+const UPDATE_AUTHORS = 'AUTHORS/UPDATE_AUTHORS';
+const DELETE_AUTHORS = 'AUTHORS/DELETE_AUTHORS';
 
-export const listAuthors = authors => {
+
+const listAuthors = authors => {
   return {
-    type: AuthorActionTypes.LIST_AUTHORS,
+    type: LIST_AUTHORS,
     authors: authors
   }
 }
 
-export const deleteAuthor = index => {
+const deleteAuthor = index => {
   return {
-    type: AuthorActionTypes.DELETE_AUTHORS,
+    type: DELETE_AUTHORS,
     index
   }
 }
 
-export const addAuthor = author => {
+const addAuthor = author => {
   return {
-    type: AuthorActionTypes.ADD_AUTHOR,
+    type: ADD_AUTHOR,
     author
   }
 }
 
-export const updateAuthor = author => {
+const updateAuthor = author => {
   return {
-    type: AuthorActionTypes.UPDATE_AUTHORS,
+    type: UPDATE_AUTHORS,
     author
   }
+}
+
+export {
+  LIST_AUTHORS,
+  ADD_AUTHOR,
+  UPDATE_AUTHORS,
+  DELETE_AUTHORS,
+  listAuthors,
+  deleteAuthor,
+  addAuthor,
+  updateAuthor
 }
