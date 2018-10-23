@@ -2,21 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from "react-router-dom";
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import store from '../store';
 import CourseAPI from '../api/mockCourseApi';
-import reducers from '../reducers/reducers';
 import HomePage from '../containers/homePage';
 import AboutPage from '../containers/aboutPage';
 import CoursePage from '../containers/coursePage';
+import AuthorPage from '../containers/authorPage';
 import ManageCoursePage from '../components/course/manageCoursePage';
+import manageAuthorPage from '../components/author/manageAuthorPage';
 import { listCourses } from '../actions/course';
 
 it('renders without crashing', () => {
-
-  const store = createStore(
-    reducers,
-    window.devToolsExtension && window.devToolsExtension()
-  );
 
   CourseAPI.getAllCourses().then(result => {
     store.dispatch(listCourses(result));
@@ -32,6 +28,9 @@ it('renders without crashing', () => {
           <Route path="/about" component={AboutPage} />
           <Route path="/course/:id" component={ManageCoursePage} />
           <Route path="/courses" component={CoursePage} />
+          <Route exact path="/authors" component={AuthorPage} />
+          <Route exact path="/author" component={manageAuthorPage} />
+          <Route exact path="/author/:id" component={manageAuthorPage} />
         </div>
       </BrowserRouter>
     </Provider>, div);
