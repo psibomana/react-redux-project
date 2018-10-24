@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from "react-router-dom";
 import { Provider } from 'react-redux';
 import store from '../store';
+import CourseAPI from '../api/mockCourseApi';
 import HomePage from '../containers/homePage';
 import AboutPage from '../containers/aboutPage';
 import CoursePage from '../containers/coursePage';
@@ -12,6 +13,10 @@ import manageAuthorPage from '../components/author/manageAuthorPage';
 import { listCourses } from '../actions/course';
 
 it('renders without crashing', () => {
+
+  CourseAPI.getAllCourses().then(result => {
+    store.dispatch(listCourses(result));
+  });
 
   let div = document.createElement('div');
 
