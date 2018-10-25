@@ -12,11 +12,7 @@ import ManageCoursePage from '../components/course/manageCoursePage';
 import manageAuthorPage from '../components/author/manageAuthorPage';
 import { listCourses } from '../actions/course';
 
-it.skip('renders without crashing', () => {
-
-  CourseAPI.getAllCourses().then(result => {
-    store.dispatch(listCourses(result));
-  });
+it('renders without crashing', () => {
 
   let div = document.createElement('div');
 
