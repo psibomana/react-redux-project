@@ -14,6 +14,10 @@ import { listCourses } from '../actions/course';
 
 it('renders without crashing', () => {
 
+  CourseAPI.getAllCourses().then(result => {
+    store.dispatch(listCourses(result));
+  });
+
   let div = document.createElement('div');
 
   ReactDOM.render(
