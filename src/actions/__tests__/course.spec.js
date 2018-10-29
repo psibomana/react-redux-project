@@ -1,13 +1,13 @@
 import {
-  listCourses,
   LIST_COURSES,
-  deleteCourse,
   DELETE_COURSE,
-  addCourse,
   ADD_COURSE,
-  updateCourse,
-  UPDATE_COURSE
-} from "../../actions/course";
+  UPDATE_COURSE,
+  listCourses,
+  deleteCourse,
+  addCourse,
+  updateCourse
+} from "../course";
 
 describe('Course Actions Test', () => {
   it('should return list courses action object', () => {

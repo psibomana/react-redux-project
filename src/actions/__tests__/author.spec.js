@@ -7,7 +7,7 @@ import {
   ADD_AUTHOR,
   updateAuthor,
   UPDATE_AUTHORS
-} from "../../actions/author";
+} from "../author";
 
 describe('Author Actions Test', () => {
 
