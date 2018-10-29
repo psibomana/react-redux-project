@@ -9,10 +9,6 @@ import AuthorApi from '../api/mockAuthorApi';
 
 class AuthorPage extends Component {
 
-  static propTypes = {
-    authors: PropTypes.array.isRequired
-  };
-
   constructor(props) {
     super(props);
 
@@ -50,6 +46,10 @@ class AuthorPage extends Component {
     );
   }
 }
+
+AuthorPage.propTypes = {
+  authors: PropTypes.array.isRequired
+};
 
 const mapStateToProps = state => {
   return {

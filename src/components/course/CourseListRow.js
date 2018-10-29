@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const CourseListRow = ({ course }) => {
+function CourseListRow({ course }) {
   return (
     <tr>
       <td><a href={course.watchHref} target="_blank" rel="noopener noreferrer">Watch</a></td>
@@ -12,7 +12,7 @@ const CourseListRow = ({ course }) => {
       <td>{course.length}</td>
     </tr>
   );
-};
+}
 
 CourseListRow.propTypes = {
   course: PropTypes.object.isRequired

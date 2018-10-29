@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CourseListRow from './courseListRow';
 
-const CourseList = props => {
-
-  const { courses } = props;
+function CourseList({ courses }) {
 
   return (
     <table className="table">
@@ -24,7 +22,7 @@ const CourseList = props => {
       </tbody>
     </table>
   );
-};
+}
 
 CourseList.propTypes = {
   courses: PropTypes.array.isRequired

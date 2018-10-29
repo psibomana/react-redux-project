@@ -9,10 +9,6 @@ import CourseList from '../components/course/courseList';
 
 class CoursePage extends Component {
 
-  static propTypes = {
-    courses: PropTypes.array.isRequired
-  };
-
   constructor(props) {
     super(props);
 
@@ -54,6 +50,10 @@ class CoursePage extends Component {
     );
   }
 }
+
+CoursePage.propTypes = {
+  courses: PropTypes.array.isRequired
+};
 
 const mapStateToProps = state => {
   return {

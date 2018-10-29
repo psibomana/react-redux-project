@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import TextInput from '../common/textInput';
 import SelectInput from '../common/selectInput';
 
-const CourseForm = ({course, allAuthors, onSave, onChange, onDelete, saving, errors, history}) => {
+function CourseForm({course, allAuthors, onSave, onChange, onDelete, saving, errors, history}) {
 
   const onDeleteCourse = () => {
     history.push('/courses');
@@ -67,7 +67,7 @@ const CourseForm = ({course, allAuthors, onSave, onChange, onDelete, saving, err
         onClick={onDeleteCourse}/>
     </form>
   );
-};
+}
 
 
 CourseForm.propTypes = {

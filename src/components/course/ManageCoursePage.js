@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { bindActionCreators } from 'redux';
 import * as CourseActions from '../../actions/course';
 import Header from '../common/header';
 import CourseForm from './courseForm';
@@ -46,7 +46,16 @@ class ManageCoursePage extends React.Component {
   }
 
   render() {
-    const { course, errors, allAuthors, onChange, onSave, onDelete, saving } = this.state;
+    const {
+      course,
+      errors,
+      allAuthors,
+      onChange,
+      onSave,
+      onDelete,
+      saving
+    } = this.state;
+
     return (
       <div className="container">
         <Header/>
