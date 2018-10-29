@@ -3,7 +3,6 @@ import Header from '../components/common/header';
 
 function AboutPage(props) {
   return (
-
     <div className="container">
       <Header/>
       <div className="card align v-offset-10">
