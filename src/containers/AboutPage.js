@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/common/header';
 
-const AboutPage = () => {
+function AboutPage(props) {
   return (
 
     <div className="container">
