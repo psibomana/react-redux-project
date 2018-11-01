@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Select Input Common Component should render as expected 1`] = `
+<div
+  className="form-group"
+>
+  <label
+    htmlFor="Item Name"
+  >
+    Item Label
+  </label>
+  <div
+    className="field"
+  >
+    <select
+      className="form-control"
+      name="Item Name"
+      onChange={[Function]}
+      value="Item Value"
+    >
+      <option
+        value=""
+      >
+        Select Default Option
+      </option>
+      <option
+        key="1"
+        value="Option First Name 1 Option Last Name 1"
+      >
+        Option First Name 1 Option Last Name 1
+      </option>
+      <option
+        key="2"
+        value="Option First Name 2 Option Last Name 2"
+      >
+        Option First Name 2 Option Last Name 2
+      </option>
+      <option
+        key="3"
+        value="Option First Name 3 Option Last Name 3"
+      >
+        Option First Name 3 Option Last Name 3
+      </option>
+    </select>
+    <div
+      className="alert alert-danger"
+    >
+      Error
+    </div>
+  </div>
+</div>
+`;

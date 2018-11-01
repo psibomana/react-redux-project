@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Author Page should render as expected 1`] = `
+<AuthorPage
+  actions={
+    Object {
+      "addAuthor": [Function],
+      "deleteAuthor": [Function],
+      "listAuthors": [Function],
+      "updateAuthor": [Function],
+    }
+  }
+  authors={
+    Array [
+      Object {
+        "firstName": "Cory",
+        "id": "cory-house",
+        "lastName": "House",
+      },
+      Object {
+        "firstName": "Scott",
+        "id": "scott-allen",
+        "lastName": "Allen",
+      },
+      Object {
+        "firstName": "Dan",
+        "id": "dan-wahlin",
+        "lastName": "Wahlin",
+      },
+    ]
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "clear": [Function],
+        "get": [Function],
+        "notify": [Function],
+        "subscribe": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": [Function],
+    }
+  }
+/>
+`;

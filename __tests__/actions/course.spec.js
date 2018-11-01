@@ -7,7 +7,7 @@ import {
   deleteCourse,
   addCourse,
   updateCourse
-} from "../course";
+} from "../../src/actions/course";
 
 describe('Course Actions Test', () => {
   it('should return list courses action object', () => {
