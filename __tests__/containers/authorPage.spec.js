@@ -5,34 +5,39 @@ import toJson from 'enzyme-to-json'
 import configureStore from 'redux-mock-store'
 import AuthorPage from '../../src/containers/authorPage'
 
-const mockStore = configureStore();
-
-const initialState = {
-  AuthorReducer: [
-    {
-      id: 'cory-house',
-      firstName: 'Cory',
-      lastName: 'House'
-    },
-    {
-      id: 'scott-allen',
-      firstName: 'Scott',
-      lastName: 'Allen'
-    },
-    {
-      id: 'dan-wahlin',
-      firstName: 'Dan',
-      lastName: 'Wahlin'
-    }
-  ]
-};
-
-const store = mockStore(initialState);
-
 describe('Author Page', () => {
-  it('should render as expected', () => {
-    const wrapper = shallow(<AuthorPage store={store} />);
+  let store, wrapper, initialState;
+  beforeEach(() => {
+    const mockStore = configureStore();
+    initialState = {
+      AuthorReducer: [
+        {
+          id: 'cory-house',
+          firstName: 'Cory',
+          lastName: 'House'
+        },
+        {
+          id: 'scott-allen',
+          firstName: 'Scott',
+          lastName: 'Allen'
+        },
+        {
+          id: 'dan-wahlin',
+          firstName: 'Dan',
+          lastName: 'Wahlin'
+        }
+      ]
+    };
+    store = mockStore(initialState);
+    wrapper = shallow(<AuthorPage store={store} />);
+  })
 
+  it('should render as expected', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
-  });
+  })
+
+  it('should map state to props', () => {
+    expect(wrapper.props().authors.length)
+      .toEqual(initialState.AuthorReducer.length)
+  })
 });

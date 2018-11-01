@@ -1,15 +1,33 @@
-import {
-  LIST_COURSES,
-  DELETE_COURSE,
-  ADD_COURSE,
-  UPDATE_COURSE,
-  listCourses,
-  deleteCourse,
-  addCourse,
-  updateCourse
-} from "../../src/actions/course";
+import configureStore from 'redux-mock-store'
+import * as CourseActions from "../../src/actions/course";
 
 describe('Course Actions Test', () => {
+  let store;
+  beforeEach(() => {
+    const mockStore = configureStore();
+    const initialState = {
+      CourseReducer: [
+        {
+          id: "react-flux-building-applications",
+          title: "Building Applications in React and Flux",
+          watchHref: "http://www.pluralsight.com/courses/react-flux-building-applications",
+          authorId: "cory-house",
+          length: "5:08",
+          category: "JavaScript"
+        },
+        {
+          id: "clean-code",
+          title: "Clean Code: Writing Code for Humans",
+          watchHref: "http://www.pluralsight.com/courses/writing-clean-code-humans",
+          authorId: "cory-house",
+          length: "3:10",
+          category: "Software Practices"
+        }
+      ]
+    };
+    store = mockStore(initialState);
+  })
+
   it('should return list courses action object', () => {
     const courses = [{
       id: "web-components-shadow-dom",
@@ -20,19 +38,20 @@ describe('Course Actions Test', () => {
       category: "HTML5"
     }]
 
-    const listCourseAction = listCourses(courses);
-
-    expect(listCourseAction.courses).toEqual(courses);
-    expect(listCourseAction.type).toEqual(LIST_COURSES);
+    store.dispatch(CourseActions.listCourses(courses));
+    const action = store.getActions()[0];
+    expect(action.courses).toEqual(courses);
+    expect(action.type).toEqual(CourseActions.LIST_COURSES);
   });
 
   it('should return delete course action object', () => {
     const index = "web-components-shadow-dom";
 
-    const deleteCourseAction = deleteCourse(index);
+    store.dispatch(CourseActions.deleteCourse(index));
+    const action = store.getActions()[0];
 
-    expect(deleteCourseAction.index).toEqual(index);
-    expect(deleteCourseAction.type).toEqual(DELETE_COURSE);
+    expect(action.index).toEqual(index);
+    expect(action.type).toEqual(CourseActions.DELETE_COURSE);
   });
 
 
@@ -46,16 +65,17 @@ describe('Course Actions Test', () => {
       category: "HTML5"
     }
 
-    const addCourseAction = addCourse(course);
+    store.dispatch(CourseActions.addCourse(course));
+    const action = store.getActions()[0];
 
-    expect(addCourseAction.course).toEqual(course);
-    expect(addCourseAction.course).toHaveProperty("id");
-    expect(addCourseAction.course).toHaveProperty("title");
-    expect(addCourseAction.course).toHaveProperty("watchHref");
-    expect(addCourseAction.course).toHaveProperty("authorId");
-    expect(addCourseAction.course).toHaveProperty("length");
-    expect(addCourseAction.course).toHaveProperty("category");
-    expect(addCourseAction.type).toEqual(ADD_COURSE);
+    expect(action.course).toEqual(course);
+    expect(action.course).toHaveProperty("id");
+    expect(action.course).toHaveProperty("title");
+    expect(action.course).toHaveProperty("watchHref");
+    expect(action.course).toHaveProperty("authorId");
+    expect(action.course).toHaveProperty("length");
+    expect(action.course).toHaveProperty("category");
+    expect(action.type).toEqual(CourseActions.ADD_COURSE);
   });
 
 
@@ -69,15 +89,16 @@ describe('Course Actions Test', () => {
       category: "HTML5"
     }
 
-    const updateCourseAction = updateCourse(course);
+    store.dispatch(CourseActions.updateCourse(course));
+    const action = store.getActions()[0];
 
-    expect(updateCourseAction.course).toEqual(course);
-    expect(updateCourseAction.course).toHaveProperty("id");
-    expect(updateCourseAction.course).toHaveProperty("title");
-    expect(updateCourseAction.course).toHaveProperty("watchHref");
-    expect(updateCourseAction.course).toHaveProperty("authorId");
-    expect(updateCourseAction.course).toHaveProperty("length");
-    expect(updateCourseAction.course).toHaveProperty("category");
-    expect(updateCourseAction.type).toEqual(UPDATE_COURSE);
+    expect(action.course).toEqual(course);
+    expect(action.course).toHaveProperty("id");
+    expect(action.course).toHaveProperty("title");
+    expect(action.course).toHaveProperty("watchHref");
+    expect(action.course).toHaveProperty("authorId");
+    expect(action.course).toHaveProperty("length");
+    expect(action.course).toHaveProperty("category");
+    expect(action.type).toEqual(CourseActions.UPDATE_COURSE);
   });
 });
