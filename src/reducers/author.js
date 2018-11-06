@@ -4,7 +4,6 @@ import {
   UPDATE_AUTHORS,
   DELETE_AUTHORS
 } from '../actions/author';
-import AuthorApi from '../api/mockAuthorApi';
 
 const initialState = [];
 
@@ -15,19 +14,13 @@ export default function AuthorReducer(state=initialState, action) {
           ...action.authors
         ]
     case ADD_AUTHOR:
-      AuthorApi.saveAuthor(action.author).then(result => {
         return [
-          result
+          action.author
         ]
-      });
-      return [];
     case DELETE_AUTHORS:
-      AuthorApi.deleteAuthor(action.index).then(result => {
         return [
-            ...result
+            ...action.authors
           ]
-      }).catch();
-      return [];
     case UPDATE_AUTHORS:
       return [
           ...state.filter(author => {

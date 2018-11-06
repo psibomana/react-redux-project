@@ -7,14 +7,14 @@ const DELETE_AUTHORS = 'AUTHORS/DELETE_AUTHORS';
 const listAuthors = authors => {
   return {
     type: LIST_AUTHORS,
-    authors: authors
+    authors
   }
 }
 
-const deleteAuthor = index => {
+const deleteAuthor = authors => {
   return {
     type: DELETE_AUTHORS,
-    index
+    authors
   }
 }
 

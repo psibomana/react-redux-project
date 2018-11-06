@@ -42,11 +42,15 @@ describe('Author Actions Test', () => {
   });
 
   it('should return delete author action object', () => {
-    const index = 'firstName-lastName';
+    const authors = [{
+      id: 'firstName-lastName',
+      firstName: 'firstName',
+      lastName: 'lastName'
+    }]
 
-    store.dispatch(AuthorActions.deleteAuthor(index));
+    store.dispatch(AuthorActions.deleteAuthor(authors));
     const action = store.getActions()[0];
-    expect(action.index).toEqual(index);
+    expect(action.authors).toEqual(authors);
     expect(action.type).toEqual(AuthorActions.DELETE_AUTHORS);
   });
 

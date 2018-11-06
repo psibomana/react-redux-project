@@ -2,12 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextInput from '../common/textInput';
 import SelectInput from '../common/selectInput';
+import CourseApi from '../../api/mockCourseApi';
 
 function CourseForm({course, allAuthors, onSave, onChange, onDelete, saving, errors, history}) {
 
   const onDeleteCourse = () => {
     history.push('/courses');
-    onDelete(course.id);
+
+    CourseApi.deleteCourse(course.id).then(result => {
+      onDelete(result);
+    })
   }
 
   const onFiedChange = (e) => {
@@ -17,7 +21,10 @@ function CourseForm({course, allAuthors, onSave, onChange, onDelete, saving, err
 
   const onUpdateCourse = () => {
     history.push('/courses');
-    onSave(course);
+
+    CourseApi.saveCourse(course).then(result => {
+      onSave(result);
+    });
   }
 
   return (

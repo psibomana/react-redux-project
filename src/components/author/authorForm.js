@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextInput from '../common/textInput';
+import AuthorApi from '../../api/mockAuthorApi';
 
 const AuthorForm = ({author, onSave, onChange, onDelete, saving, errors, history}) => {
 
   const onDeleteAuthor = () => {
     history.push('/authors');
-    onDelete(author.id);
+
+    AuthorApi.deleteAuthor(author.id).then(result => {
+      onDelete(result);
+    });
   }
 
 
@@ -17,7 +21,10 @@ const AuthorForm = ({author, onSave, onChange, onDelete, saving, errors, history
 
   const onUpdateAuthor = () => {
     history.push('/authors');
-    onSave(author);
+
+    AuthorApi.saveAuthor(author).then(result => {
+      onSave(result);
+    })
   }
 
   return (

@@ -45,12 +45,19 @@ describe('Course Actions Test', () => {
   });
 
   it('should return delete course action object', () => {
-    const index = "web-components-shadow-dom";
+    const courses = [{
+      id: "web-components-shadow-dom",
+      title: "Web Component Fundamentals",
+      watchHref: "http://www.pluralsight.com/courses/web-components-shadow-dom",
+      authorId: "cory-house",
+      length: "5:10",
+      category: "HTML5"
+    }]
 
-    store.dispatch(CourseActions.deleteCourse(index));
+    store.dispatch(CourseActions.deleteCourse(courses));
     const action = store.getActions()[0];
 
-    expect(action.index).toEqual(index);
+    expect(action.courses.length).toEqual(1);
     expect(action.type).toEqual(CourseActions.DELETE_COURSE);
   });
 
