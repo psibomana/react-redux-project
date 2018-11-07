@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Course List Test should render as expected 1`] = `
+<table
+  className="table"
+>
+  <thead>
+    <tr>
+      <th>
+         
+      </th>
+      <th>
+        Title
+      </th>
+      <th>
+        Author
+      </th>
+      <th>
+        Category
+      </th>
+      <th>
+        Length
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <CourseListRow
+      course={
+        Object {
+          "authorId": "cory-house",
+          "category": "JavaScript",
+          "id": "react-flux-building-applications",
+          "length": "5:08",
+          "title": "Building Applications in React and Flux",
+          "watchHref": "http://www.pluralsight.com/courses/react-flux-building-applications",
+        }
+      }
+      key="react-flux-building-applications"
+    />
+    <CourseListRow
+      course={
+        Object {
+          "authorId": "cory-house",
+          "category": "Software Practices",
+          "id": "clean-code",
+          "length": "3:10",
+          "title": "Clean Code: Writing Code for Humans",
+          "watchHref": "http://www.pluralsight.com/courses/writing-clean-code-humans",
+        }
+      }
+      key="clean-code"
+    />
+  </tbody>
+</table>
+`;

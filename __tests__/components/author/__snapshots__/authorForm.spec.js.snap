@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Author Form Test should render as expected 1`] = `
+<form>
+  <h1>
+    Manage Author
+  </h1>
+  <TextInput
+    id="firstName"
+    label="First Name"
+    name="firstName"
+    onChange={[Function]}
+    value="firstName"
+  />
+  <TextInput
+    id="lastName"
+    label="Last Name"
+    name="lastName"
+    onChange={[Function]}
+    value="lastName"
+  />
+  <input
+    className="btn btn-primary"
+    id="saveBtn"
+    onClick={[Function]}
+    type="button"
+    value="Save"
+  />
+  <input
+    className="btn btn-danger"
+    id="deleteBtn"
+    onClick={[Function]}
+    type="button"
+    value="Delete"
+  />
+</form>
+`;

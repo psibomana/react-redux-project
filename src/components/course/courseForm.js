@@ -31,6 +31,7 @@ function CourseForm({course, allAuthors, onSave, onChange, onDelete, saving, err
     <form>
       <h1>Manage Course</h1>
       <TextInput
+        id="title"
         name="title"
         label="Title"
         value={course.title}
@@ -48,6 +49,7 @@ function CourseForm({course, allAuthors, onSave, onChange, onDelete, saving, err
         error={errors.authorId}/>
 
       <TextInput
+        id="category"
         name="category"
         label="Category"
         value={course.category}
@@ -62,12 +64,14 @@ function CourseForm({course, allAuthors, onSave, onChange, onDelete, saving, err
         error={errors.length}/>
 
       <input
+        id="saveBtn"
         type="button"
         disabled={saving}
         value='Save'
         className="btn btn-primary"
         onClick={onUpdateCourse}/>
       <input
+        id="deleteBtn"
         type="button"
         value='Delete'
         className="btn btn-danger"

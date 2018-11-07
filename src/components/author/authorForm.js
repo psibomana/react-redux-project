@@ -31,21 +31,25 @@ const AuthorForm = ({author, onSave, onChange, onDelete, saving, errors, history
     <form>
       <h1>Manage Author</h1>
       <TextInput
+        id="firstName"
         name="firstName"
         label="First Name"
         value={author.firstName}
         onChange={onFiedChange}/>
       <TextInput
+        id="lastName"
         name="lastName"
         label="Last Name"
         value={author.lastName}
         onChange={onFiedChange}/>
       <input
+        id='saveBtn'
         type="button"
         value='Save'
         className="btn btn-primary"
         onClick={onUpdateAuthor}/>
       <input
+        id='deleteBtn'
         type="button"
         value='Delete'
         className="btn btn-danger"
