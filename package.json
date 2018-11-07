@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
-    "test:coverage": "yarn run test --coverage",
+    "test": "node scripts/test.js -w 1",
+    "test:coverage": "yarn run test --coverage -w 1",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
     "lint": "eslint webpack.config.js src --color"
