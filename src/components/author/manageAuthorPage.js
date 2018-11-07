@@ -12,43 +12,43 @@ class ManageAuthorPage extends React.Component {
   constructor(props) {
     super(props);
 
+    let author = {
+      id: '',
+      firstName: '',
+      lastName: '',
+    };
+
     this.state = {
-      author: {
-        id: "",
-        firstName: "",
-        lastName: ""
-      }
-    }
-    const authorID = props.match.params.id;
+      author: author,
+      allAuthors: [],
+      onSave: props.actions.addAuthor,
+      onChange: props.actions.updateAuthor,
+      onDelete: props.actions.deleteAuthor,
+      saving: false,
+      errors: {}
+    };
 
-    if(authorID) {
-      AuthorApi.getAuthorByID(authorID).then(author => {
-        props.actions.getAuthor(author)
-        this.setState({
-          author
-        })
-      })
-    }
-  }
-
-  onUpdate = author => {
-    this.setState({
-      author
-    })
+    AuthorApi.getAuthorByID(props.match.params.id).then(author => {
+      this.setState({
+        author: author
+      });
+    });
   }
 
   render() {
-    const {actions, history} = this.props;
     return (
       <div className="container">
         <Header/>
         <div className="align">
           <AuthorForm
             author={this.state.author}
-            onChange={this.onUpdate}
-            onSave={actions.addAuthor}
-            onDelete={actions.deleteAuthor}
-            history={history}
+            errors={this.state.errors}
+            allAuthors={this.state.allAuthors}
+            onChange={this.state.onChange}
+            onSave={this.state.onSave}
+            onDelete={this.state.onDelete}
+            saving={this.state.saving}
+            history={this.props.history}
           />
         </div>
       </div>
@@ -61,8 +61,13 @@ ManageAuthorPage.propTypes = {
 };
 
 const mapStateToProps = state => {
+  let author = {
+    id: '',
+    firstName: '',
+    lastName: '',
+  };
   return {
-    author: state.AuthorReducer.author,
+    author: author
   };
 }
 

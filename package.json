@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js -w 1",
-    "test:coverage": "yarn run test --coverage -w 1",
+    "test": "node scripts/test.js",
+    "test:coverage": "yarn run test --coverage",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
     "lint": "eslint webpack.config.js src --color"
@@ -27,10 +27,20 @@
     "css-loader": "1.0.0",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
+    "eslint": "5.6.0",
+    "eslint-config-react-app": "3.0.3",
+    "eslint-loader": "2.1.1",
+    "eslint-plugin-flowtype": "2.50.1",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jsx-a11y": "6.1.1",
+    "eslint-plugin-react": "7.11.1",
     "file-loader": "2.0.0",
     "fs-extra": "7.0.0",
     "html-webpack-plugin": "4.0.0-alpha.2",
     "identity-obj-proxy": "3.0.0",
+    "jest": "23.6.0",
+    "jest-pnp-resolver": "1.0.1",
+    "jest-resolve": "23.6.0",
     "mini-css-extract-plugin": "0.4.3",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.1.0",
@@ -58,23 +68,6 @@
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "3.6.2"
   },
-  "devDependencies": {
-    "enzyme": "3.7.0",
-    "enzyme-adapter-react-16": "1.6.0",
-    "enzyme-to-json": "3.3.4",
-    "eslint": "5.6.0",
-    "eslint-config-react-app": "3.0.3",
-    "eslint-loader": "2.1.1",
-    "eslint-plugin-flowtype": "2.50.1",
-    "eslint-plugin-import": "2.14.0",
-    "eslint-plugin-jsx-a11y": "6.1.1",
-    "eslint-plugin-react": "7.11.1",
-    "jest": "23.6.0",
-    "jest-pnp-resolver": "1.0.1",
-    "jest-resolve": "23.6.0",
-    "react-addons-test-utils": "15.6.2",
-    "redux-mock-store": "^1.5.3"
-  },
   "browserslist": [
     ">0.2%",
     "not dead",
@@ -83,19 +76,13 @@
   ],
   "jest": {
     "collectCoverageFrom": [
-      "__tests__/**/*.{js,jsx}",
       "src/**/*.{js,jsx}"
     ],
     "resolver": "jest-pnp-resolver",
-    "setupTestFrameworkScriptFile": "<rootDir>/__tests__/setup/setupEnzyme.js",
-    "testPathIgnorePatterns": [
-      "<rootDir>/__tests__/setup/"
-    ],
     "setupFiles": [
       "react-app-polyfill/jsdom"
     ],
     "testMatch": [
-      "<rootDir>/__tests__/**/*.{js,jsx}",
       "<rootDir>/src/**/__tests__/**/*.{js,jsx}",
       "<rootDir>/src/**/?(*.)(spec|test).{js,jsx}"
     ],

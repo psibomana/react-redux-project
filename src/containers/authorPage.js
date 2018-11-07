@@ -53,8 +53,7 @@ AuthorPage.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    authors: state.AuthorReducer.authors,
-    author: state.AuthorReducer.author,
+    authors: state.AuthorReducer
   }
 }
 

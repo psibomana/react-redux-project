@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import AuthorListRow from './authorListRow';
 
 const AuthorList = props => {
@@ -24,9 +25,14 @@ const AuthorList = props => {
   );
 };
 
+const mapStateToProps = state => {
+  return {
+    authors: state.AuthorReducer
+  }
+}
 
 AuthorList.propTypes = {
   authors: PropTypes.array.isRequired
 };
 
-export default AuthorList;
+export default connect(mapStateToProps)(AuthorList);

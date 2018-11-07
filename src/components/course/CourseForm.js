@@ -2,16 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextInput from '../common/textInput';
 import SelectInput from '../common/selectInput';
-import CourseApi from '../../api/mockCourseApi';
 
 function CourseForm({course, allAuthors, onSave, onChange, onDelete, saving, errors, history}) {
 
   const onDeleteCourse = () => {
     history.push('/courses');
-
-    CourseApi.deleteCourse(course.id).then(result => {
-      onDelete(result);
-    })
+    onDelete(course.id);
   }
 
   const onFiedChange = (e) => {
@@ -21,17 +17,13 @@ function CourseForm({course, allAuthors, onSave, onChange, onDelete, saving, err
 
   const onUpdateCourse = () => {
     history.push('/courses');
-
-    CourseApi.saveCourse(course).then(result => {
-      onSave(result);
-    });
+    onSave(course);
   }
 
   return (
     <form>
       <h1>Manage Course</h1>
       <TextInput
-        id="title"
         name="title"
         label="Title"
         value={course.title}
@@ -49,7 +41,6 @@ function CourseForm({course, allAuthors, onSave, onChange, onDelete, saving, err
         error={errors.authorId}/>
 
       <TextInput
-        id="category"
         name="category"
         label="Category"
         value={course.category}
@@ -64,14 +55,12 @@ function CourseForm({course, allAuthors, onSave, onChange, onDelete, saving, err
         error={errors.length}/>
 
       <input
-        id="saveBtn"
         type="button"
         disabled={saving}
         value='Save'
         className="btn btn-primary"
         onClick={onUpdateCourse}/>
       <input
-        id="deleteBtn"
         type="button"
         value='Delete'
         className="btn btn-danger"
