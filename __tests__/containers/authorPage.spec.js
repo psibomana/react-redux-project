@@ -10,23 +10,25 @@ describe('Author Page', () => {
   beforeEach(() => {
     const mockStore = configureStore();
     initialState = {
-      AuthorReducer: [
-        {
-          id: 'cory-house',
-          firstName: 'Cory',
-          lastName: 'House'
-        },
-        {
-          id: 'scott-allen',
-          firstName: 'Scott',
-          lastName: 'Allen'
-        },
-        {
-          id: 'dan-wahlin',
-          firstName: 'Dan',
-          lastName: 'Wahlin'
-        }
-      ]
+      AuthorReducer: {
+        authors: [
+          {
+            id: 'cory-house',
+            firstName: 'Cory',
+            lastName: 'House'
+          },
+          {
+            id: 'scott-allen',
+            firstName: 'Scott',
+            lastName: 'Allen'
+          },
+          {
+            id: 'dan-wahlin',
+            firstName: 'Dan',
+            lastName: 'Wahlin'
+          }
+        ]
+      }
     };
     store = mockStore(initialState);
     wrapper = shallow(<AuthorPage store={store} />);
@@ -38,6 +40,6 @@ describe('Author Page', () => {
 
   it('should map state to props', () => {
     expect(wrapper.props().authors.length)
-      .toEqual(initialState.AuthorReducer.length)
+      .toEqual(initialState.AuthorReducer.authors.length)
   })
 });

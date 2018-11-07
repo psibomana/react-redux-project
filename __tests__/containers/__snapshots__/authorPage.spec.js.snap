@@ -6,6 +6,7 @@ exports[`Author Page should render as expected 1`] = `
     Object {
       "addAuthor": [Function],
       "deleteAuthor": [Function],
+      "getAuthor": [Function],
       "listAuthors": [Function],
       "updateAuthor": [Function],
     }

@@ -57,7 +57,7 @@ CoursePage.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    courses: state.CourseReducer
+    courses: state.CourseReducer.courses
   }
 }
 

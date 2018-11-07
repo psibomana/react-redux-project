@@ -34,17 +34,14 @@ const AuthorForm = ({author, onSave, onChange, onDelete, saving, errors, history
         name="firstName"
         label="First Name"
         value={author.firstName}
-        onChange={onFiedChange}
-        error={errors.firstName}/>
+        onChange={onFiedChange}/>
       <TextInput
         name="lastName"
         label="Last Name"
         value={author.lastName}
-        onChange={onFiedChange}
-        error={errors.lastName}/>
+        onChange={onFiedChange}/>
       <input
         type="button"
-        disabled={saving}
         value='Save'
         className="btn btn-primary"
         onClick={onUpdateAuthor}/>
@@ -61,9 +58,7 @@ const AuthorForm = ({author, onSave, onChange, onDelete, saving, errors, history
 AuthorForm.propTypes = {
   author: PropTypes.object.isRequired,
   onSave: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  saving: PropTypes.bool,
-  errors: PropTypes.object
+  onChange: PropTypes.func.isRequired
 };
 
 export default AuthorForm;
