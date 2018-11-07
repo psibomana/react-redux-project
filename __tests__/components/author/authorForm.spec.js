@@ -53,16 +53,4 @@ describe('Author Form Test', () => {
     wrapper.find('#lastName').simulate('change', event);
     expect(mockOnChange.mock.calls.length).toEqual(1);
   });
-
-  it.skip('should call onDelete handler from delete button', () => {
-
-    wrapper.find('#deleteBtn').simulate('click');
-    expect(mockOnDelete.mock.calls.length).toEqual(1);
-  });
-
-  it.skip('should call onSave handler from save button', () => {
-
-    wrapper.find('input').simulate('click');
-    expect(mockOnSave.mock.calls.length).toEqual(1);
-  });
 })

@@ -70,16 +70,4 @@ describe('Course Form Test', () => {
     wrapper.find('#category').simulate('change', event);
     expect(mockOnChange.mock.calls.length).toEqual(1);
   });
-
-  it.skip('should call onDelete handler from delete button', () => {
-
-    wrapper.find('#deleteBtn').simulate('click');
-    expect(mockOnDelete.mock.calls.length).toEqual(1);
-  });
-
-  it.skip('should call onSave handler from save button', () => {
-
-    wrapper.find('#saveBtn').simulate('click');
-    expect(mockOnSave.mock.calls.length).toEqual(1);
-  });
 })
