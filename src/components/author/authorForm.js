@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextInput from '../common/textInput';
+import AuthorApi from '../../api/mockAuthorApi';
 
 const AuthorForm = ({author, onSave, onChange, onDelete, saving, errors, history}) => {
 
   const onDeleteAuthor = () => {
     history.push('/authors');
-    onDelete(author.id);
+
+    AuthorApi.deleteAuthor(author.id).then(result => {
+      onDelete(result);
+    });
   }
 
 
@@ -17,31 +21,35 @@ const AuthorForm = ({author, onSave, onChange, onDelete, saving, errors, history
 
   const onUpdateAuthor = () => {
     history.push('/authors');
-    onSave(author);
+
+    AuthorApi.saveAuthor(author).then(result => {
+      onSave(result);
+    })
   }
 
   return (
     <form>
       <h1>Manage Author</h1>
       <TextInput
+        id="firstName"
         name="firstName"
         label="First Name"
         value={author.firstName}
-        onChange={onFiedChange}
-        error={errors.firstName}/>
+        onChange={onFiedChange}/>
       <TextInput
+        id="lastName"
         name="lastName"
         label="Last Name"
         value={author.lastName}
-        onChange={onFiedChange}
-        error={errors.lastName}/>
+        onChange={onFiedChange}/>
       <input
+        id='saveBtn'
         type="button"
-        disabled={saving}
         value='Save'
         className="btn btn-primary"
         onClick={onUpdateAuthor}/>
       <input
+        id='deleteBtn'
         type="button"
         value='Delete'
         className="btn btn-danger"
@@ -54,9 +62,7 @@ const AuthorForm = ({author, onSave, onChange, onDelete, saving, errors, history
 AuthorForm.propTypes = {
   author: PropTypes.object.isRequired,
   onSave: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  saving: PropTypes.bool,
-  errors: PropTypes.object
+  onChange: PropTypes.func.isRequired
 };
 
 export default AuthorForm;

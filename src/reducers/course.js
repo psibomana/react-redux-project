@@ -4,35 +4,37 @@ import {
   DELETE_COURSE,
   UPDATE_COURSE
 } from '../actions/course';
-import CourseApi from '../api/mockCourseApi';
 
-const initialState = [];
+const initialState = {
+  courses: [],
+  course: {
+    id: "",
+    title: "",
+    watchHref: "",
+    authorId: "",
+    length: "",
+    category: ""
+  }
+};
 
 export default function CourseReducer(state=initialState, action) {
   switch(action.type) {
     case LIST_COURSES:
-      return [
-          ...action.courses
-        ]
+      return Object.assign({}, state, {
+        courses: action.courses
+      })
     case ADD_COURSE:
-      CourseApi.saveCourse(action.course).then(result => {
-        return [result];
-      });
-      return [];
+      return Object.assign({}, state, {
+        course: action.course
+      })
     case DELETE_COURSE:
-      CourseApi.deleteCourse(action.index).then(result => {
-        return result;
-      });
-      return [];
+      return Object.assign({}, state, {
+        courses : action.courses
+      })
     case UPDATE_COURSE:
-      return [
-        ...state.filter(course => {
-          if(course.id === action.course.id){
-            return action.course;
-          }
-          return course;
-        })
-      ]
+      return Object.assign({}, state, {
+        course: action.course
+      })
     default:
       return state;
   }

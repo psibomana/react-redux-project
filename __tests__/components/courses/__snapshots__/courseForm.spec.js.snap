@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Course Form Test should render as expected 1`] = `
+<form>
+  <h1>
+    Manage Course
+  </h1>
+  <TextInput
+    id="title"
+    label="Title"
+    name="title"
+    onChange={[Function]}
+    value="Clean Code: Writing Code for Humans"
+  />
+  <SelectInput
+    defaultOption="Select Author"
+    id="clean-code"
+    label="Author"
+    name="authorId"
+    onChange={[Function]}
+    options={Array []}
+    value="cory-house"
+  />
+  <TextInput
+    id="category"
+    label="Category"
+    name="category"
+    onChange={[Function]}
+    value="Software Practices"
+  />
+  <TextInput
+    label="Length"
+    name="length"
+    onChange={[Function]}
+    value="3:10"
+  />
+  <input
+    className="btn btn-primary"
+    disabled={false}
+    id="saveBtn"
+    onClick={[Function]}
+    type="button"
+    value="Save"
+  />
+  <input
+    className="btn btn-danger"
+    id="deleteBtn"
+    onClick={[Function]}
+    type="button"
+    value="Delete"
+  />
+</form>
+`;

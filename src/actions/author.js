@@ -2,19 +2,20 @@ const LIST_AUTHORS = 'AUTHORS/LIST_AUTHORS';
 const ADD_AUTHOR = 'AUTHORS/ADD_AUTHORS';
 const UPDATE_AUTHORS = 'AUTHORS/UPDATE_AUTHORS';
 const DELETE_AUTHORS = 'AUTHORS/DELETE_AUTHORS';
+const GET_AUTHOR = 'AUTHORS/GET_AUTHOR';
 
 
 const listAuthors = authors => {
   return {
     type: LIST_AUTHORS,
-    authors: authors
+    authors
   }
 }
 
-const deleteAuthor = index => {
+const deleteAuthor = authors => {
   return {
     type: DELETE_AUTHORS,
-    index
+    authors
   }
 }
 
@@ -32,13 +33,22 @@ const updateAuthor = author => {
   }
 }
 
+const getAuthor = author => {
+  return {
+    type: GET_AUTHOR,
+    author
+  }
+}
+
 export {
   LIST_AUTHORS,
   ADD_AUTHOR,
   UPDATE_AUTHORS,
   DELETE_AUTHORS,
+  GET_AUTHOR,
   listAuthors,
   deleteAuthor,
   addAuthor,
-  updateAuthor
+  updateAuthor,
+  getAuthor
 }

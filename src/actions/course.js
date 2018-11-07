@@ -10,10 +10,10 @@ const listCourses = courses => {
   }
 }
 
-const deleteCourse = index => {
+const deleteCourse = courses => {
   return {
     type: DELETE_COURSE,
-    index
+    courses
   }
 }
 

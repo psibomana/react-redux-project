@@ -2,41 +2,41 @@ import {
   LIST_AUTHORS,
   ADD_AUTHOR,
   UPDATE_AUTHORS,
-  DELETE_AUTHORS
+  DELETE_AUTHORS,
+  GET_AUTHOR
 } from '../actions/author';
-import AuthorApi from '../api/mockAuthorApi';
 
-const initialState = [];
+const initialState = {
+  authors: [],
+  author: {
+    id: '',
+    firstName: '',
+    lastName: ''
+  }
+};
 
 export default function AuthorReducer(state=initialState, action) {
   switch(action.type) {
     case LIST_AUTHORS:
-      return [
-          ...action.authors
-        ]
+      return Object.assign({}, state, {
+        authors: action.authors,
+      })
     case ADD_AUTHOR:
-      AuthorApi.saveAuthor(action.author).then(result => {
-        return [
-          result
-        ]
-      });
-      return [];
+      return Object.assign({}, state, {
+        author: action.author
+      })
     case DELETE_AUTHORS:
-      AuthorApi.deleteAuthor(action.index).then(result => {
-        return [
-            ...result
-          ]
-      }).catch();
-      return [];
+      return Object.assign({}, state, {
+        authors: action.authors
+      })
     case UPDATE_AUTHORS:
-      return [
-          ...state.filter(author => {
-            if(author.id === action.author.id){
-              return action.author;
-            }
-            return author;
-          })
-        ]
+      return Object.assign({}, state, {
+        author: action.author
+      })
+    case GET_AUTHOR:
+      return Object.assign({}, state, {
+        author: action.author
+      })
     default:
       return state;
   }
