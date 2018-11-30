@@ -20,13 +20,15 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run:
           name: Setup Code Climate test-reporter
-          command:
+          command: |
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
       - run:
-          name: Test
+          name: Run tests and upload coverage
           command: |
-            yarn test
             ./cc-test-reporter before-build
-            sudo vendor/bin/phpunit --coverage-clover clover.xml
-            ./cc-test-reporter after-build --coverage-input-type clover --exit-code $?
+            yarn test
+            ./cc-test-reporter after-build --coverage-input-type lcov --exit-code $?
+      - store_artifacts:
+          path: coverage
+          prefix: coverage
