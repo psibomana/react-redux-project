@@ -26,7 +26,6 @@ The following should be installed in your machine:
 * Use `$ yarn start` to start the application.
 * Use `$ yarn test` to executes the tests of the application.
 
-The demo can be found [here](https://psibomana.github.io/react-redux-project/)
 
 
 ## How To Contribute
