@@ -35,8 +35,7 @@ function CourseForm({course, allAuthors, onSave, onChange, onDelete, saving, err
         name="title"
         label="Title"
         value={course.title}
-        onChange={onFiedChange}
-        error={errors.title}/>
+        onChange={onFiedChange}/>
 
       <SelectInput
         id={course.id}
@@ -45,23 +44,20 @@ function CourseForm({course, allAuthors, onSave, onChange, onDelete, saving, err
         value={course.authorId}
         defaultOption="Select Author"
         options={allAuthors}
-        onChange={onFiedChange}
-        error={errors.authorId}/>
+        onChange={onFiedChange}/>
 
       <TextInput
         id="category"
         name="category"
         label="Category"
         value={course.category}
-        onChange={onFiedChange}
-        error={errors.category}/>
+        onChange={onFiedChange}/>
 
       <TextInput
         name="length"
         label="Length"
         value={course.length}
-        onChange={onFiedChange}
-        error={errors.length}/>
+        onChange={onFiedChange}/>
 
       <input
         id="saveBtn"

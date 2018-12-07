@@ -1,8 +1,10 @@
 # React Redux Project
 Master Branch :
-[![CircleCI](https://circleci.com/gh/psibomana/react-redux-project.svg?style=svg)](https://circleci.com/gh/psibomana/react-redux-project)
+[![CircleCI](https://circleci.com/gh/psibomana/react-redux-project.svg?style=svg)](https://circleci.com/gh/psibomana/react-redux-project)[![Maintainability](https://api.codeclimate.com/v1/badges/cab83b31c3d5e3f17d17/maintainability)](https://codeclimate.com/github/psibomana/react-redux-project/maintainability)[![Test Coverage](https://api.codeclimate.com/v1/badges/cab83b31c3d5e3f17d17/test_coverage)](https://codeclimate.com/github/psibomana/react-redux-project/test_coverage)
 
+<hr>
 React Redux is a ReactJS Example from Pluralsight Course "Building Applications with React and Redux in ES6".
+<hr>
 
 ## Technologies Used
 - ReactJS 

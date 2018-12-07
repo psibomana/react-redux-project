@@ -1,6 +1,8 @@
 import {
   LIST_COURSES,
   ADD_COURSE,
+  LOAD_COURSE,
+  RESET_COURSE,
   DELETE_COURSE,
   UPDATE_COURSE
 } from '../actions/course';
@@ -25,6 +27,15 @@ export default function CourseReducer(state=initialState, action) {
       })
     case ADD_COURSE:
       return Object.assign({}, state, {
+        course: action.course
+      })
+    case LOAD_COURSE:
+      return Object.assign({}, state, {
+        course: action.course
+      })
+    case RESET_COURSE:
+      return Object.assign({}, state, {
+        courses: action.courses,
         course: action.course
       })
     case DELETE_COURSE:
