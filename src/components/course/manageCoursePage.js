@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as CourseActions from '../../actions/course';
+import * as AuthorActions from '../../actions/author';
 import Header from '../common/header';
 import CourseForm from './courseForm';
 import CourseApi from '../../api/mockCourseApi';
@@ -12,62 +13,66 @@ class ManageCoursePage extends React.Component {
 
   constructor(props) {
     super(props);
-
-    let course = {
-      id: '',
-      watchHref: '',
-      title: '',
-      authorId: '',
-      length: '',
-      category: ''
-    };
+    this.listAuthors();
 
     this.state = {
-      course: course,
-      allAuthors: [],
-      onSave: props.actions.addCourse,
-      onChange: props.actions.updateCourse,
-      onDelete: props.actions.deleteCourse,
-      saving: false,
-      errors: {}
-    };
+      course: this.props.course
+    }
+  }
 
-    CourseApi.getCoursesByID(props.match.params.id).then(course => {
+  componentDidMount(){
+    const courseId = this.props.match.params.id;
+    if(courseId) {
+      this.loadCourse(courseId)
+    } else {
+      const result = this.props.courseActions.resetCourse()
       this.setState({
-        course: course
-      });
-    });
+        course: result.course
+      })
+    }
+  }
 
+  listAuthors = () => {
     AuthorApi.getAllAuthors().then(authors => {
-      this.setState({
-        allAuthors: authors
-      });
+      this.props.authorActions.listAuthors(authors);
     });
+  }
+
+  loadCourse = (courseId) => {
+    CourseApi.getCoursesByID(courseId).then(course => {
+      this.props.courseActions.loadCourse(course);
+      this.setState({
+        course
+      })
+    });
+  }
+
+  updateCourse = (course) => {
+    this.setState({
+      course
+    })
   }
 
   render() {
     const {
-      course,
       errors,
-      allAuthors,
-      onChange,
-      onSave,
-      onDelete,
-      saving
-    } = this.state;
+      authors
+    } = this.props;
+
+    const { addCourse, deleteCourse } = this.props.courseActions;
 
     return (
       <div className="container">
         <Header/>
         <div className="align">
           <CourseForm
-            course={course}
+            course={this.state.course}
+            allAuthors={authors}
+            onSave={addCourse}
+            onChange={this.updateCourse}
+            onDelete={deleteCourse}
+            saving={false}
             errors={errors}
-            allAuthors={allAuthors}
-            onChange={onChange}
-            onSave={onSave}
-            onDelete={onDelete}
-            saving={saving}
             history={this.props.history}
           />
         </div>
@@ -81,23 +86,18 @@ ManageCoursePage.propTypes = {
 };
 
 const mapStateToProps = state => {
-  let course = {
-    id: '',
-    watchHref: '',
-    title: '',
-    authorId: '',
-    length: '',
-    category: ''
-  };
   return {
-    course: course
+    course: state.CourseReducer.course,
+    courses: state.CourseReducer.courses,
+    authors: state.AuthorReducer.authors
   };
 }
 
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(CourseActions, dispatch)
+    courseActions: bindActionCreators(CourseActions, dispatch),
+    authorActions: bindActionCreators(AuthorActions, dispatch)
   };
 }
 
