@@ -7,6 +7,8 @@ exports[`Course Page should render as expected 1`] = `
       "addCourse": [Function],
       "deleteCourse": [Function],
       "listCourses": [Function],
+      "loadCourse": [Function],
+      "resetCourse": [Function],
       "updateCourse": [Function],
     }
   }
